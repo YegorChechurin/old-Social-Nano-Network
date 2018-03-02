@@ -70,22 +70,6 @@
            	return array();
            }
 	   }
-	   
-	   public function get_fr_names() {
-           $stat = "SELECT username FROM users WHERE users.user_id IN (SELECT fr2_id FROM friends WHERE friends.fr1_id=$this->id)";
-           $impl = $this->conn->query($stat);
-           $res = $impl->fetchAll(PDO::FETCH_ASSOC);
-           foreach ($res as $key => $value) {
-           	  $fr_names[] = $value['username'];
-           }
-           $stat = "SELECT username FROM users WHERE users.user_id IN (SELECT fr1_id FROM friends WHERE friends.fr2_id=$this->id)";
-           $impl = $this->conn->query($stat);
-           $res = $impl->fetchAll(PDO::FETCH_ASSOC);
-           foreach ($res as $key => $value) {
-           	  $fr_names[] = $value['username'];
-           }
-           return $fr_names;
-	   }
 
 	   public function get_last_friendship_id() {
 		   $query = "SELECT MAX(friendship_id) FROM friends WHERE fr1_id = $this->id OR fr2_id = $this->id";
