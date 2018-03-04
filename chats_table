@@ -1,0 +1,3 @@
+DB columns for chats:
+
+Chat_id  Chat_key(sender_id+recipient_id)  Participant1_id  Participant2_id 
