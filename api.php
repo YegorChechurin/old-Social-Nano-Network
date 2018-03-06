@@ -99,13 +99,6 @@
 		   $prep->execute();
 	   }
 	   
-	   public function disp_mes() {
-		   $query = "SELECT * FROM messages WHERE recipient_id = $this->id ORDER BY sender_id";
-		   $result = $this->conn->query($query);
-		   $info = $result->fetchAll(PDO::FETCH_ASSOC);
-		   return $info;
-	   }
-
 	   public function fetch_chats() {
 	   	   /* Fetching all the messages the user have sent and/or received */
 		   $stat = "SELECT * FROM messages WHERE sender_id=$this->id OR recipient_id=$this->id";
